@@ -1,5 +1,18 @@
 #include <iostream>
 
+STARTSTR
+
+STARTCLASS
+
+class c1 (
+vars: int z = 0;
+fct: f1(x); 
+)
+
+ENDCLASS
+
+STARTFCT
+
 void function1()
 {
 	int x = 5;
@@ -10,10 +23,15 @@ int function2()
 	return 2;
 }
 
-int main 
-{
+ENDFCT
+
+ENDSTR
+
+BEGIN
+
 	int var = 0;
 	char string = "test";
 	function1(var);
 	return;
-}
+
+END
