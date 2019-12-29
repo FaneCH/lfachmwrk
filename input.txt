@@ -2,17 +2,18 @@
 
 void function1()
 {
-	
+	int x = 5;
 }
 
 int function2()
 {
-	
+	return 2;
 }
 
 int main 
 {
 	int var = 0;
 	char string = "test";
+	function1(var);
 	return;
 }
