@@ -1,0 +1,18 @@
+#include <iostream>
+
+void function1()
+{
+	
+}
+
+int function2()
+{
+	
+}
+
+int main 
+{
+	int var = 0;
+	char string = "test";
+	return;
+}
