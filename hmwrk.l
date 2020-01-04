@@ -17,6 +17,9 @@
 "%" {return MODULO;}
 "||" {return OR;}
 "&&" {return AND;}
+"concat" {return CONCAT;}
+"len" {return LENGTH;}
+
 
 -?[1-9][0-9]* {return NR;}
 [ \t] ;
