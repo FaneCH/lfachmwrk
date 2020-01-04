@@ -4,11 +4,13 @@
 %}
 %%
 "int"|"float"|"char"|"string"|"bool" {return TIP;}
-"begin_progr" {return BGIN;}
-"end_progr" {return END;}
+"BEGIN" {return BGIN;}
+"END" {return END;}
+"array" {return ARRAYTYPE;}
+"string" {return CHARTYPE;}
 @[_a-zA-Z][_a-zA-Z0-9]* {return ID;}
-":=" {return ASSIGN;}
-[0-9]+ {return NR;}
+"=" {return ASSIGN;}
+-?[1-9][0-9]* {return NR;}
 [ \t] ;
 \n {yylineno++;}
 . {return yytext[0];}

@@ -4,7 +4,7 @@ extern FILE* yyin;
 extern char* yytext;
 extern int yylineno;
 %}
-%token ID STARTCLASS ENDCLASS STARTFCT ENDFCT BEGIN END VARS FCT CLASS NR STRING LOOP TIP; 
+%token ID STARTCLASS ENDCLASS STARTFCT ENDFCT BEGIN END VARS FCT CLASS NR STRING LOOP TIP ARRAYTYPE; 
 %start program
 %%
 s: program: {printf("program corect sintactic\n");}
@@ -33,11 +33,24 @@ class_block: var
 var: TIP ID
    | TIP ID '=' val
    | TIP ID ',' var
+   | ARRAYTYPE ID '=' arrays
    ;
 
 val: NR
    | ID
    | STRING
+
+arrays : arrays ',' array
+       | array
+       ;
+
+array : NR
+      | CHARVAL
+      | '[' arrays ']'
+      | '[' ']'
+      | '{' objects '}'
+      | '{' '}'
+      ;
 
 fct: ID '(' var ')'
    | ID '(' ')'
