@@ -40,6 +40,7 @@ var: TIP ID
 val: NR
    | ID
    | STRING
+   | arrays
 
 arrays : arrays ',' array
        | array
