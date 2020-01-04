@@ -1,13 +1,13 @@
-#include <iostream>
-
 STARTSTR
+
+{
 
 STARTCLASS
 
-class c1 (
-var: int z = 0;
-fct: f1(int x); 
-)
+CLS obiect {
+DECL: int z = 0
+FUNC: f1(int x) 
+}
 
 ENDCLASS
 
@@ -15,24 +15,25 @@ STARTFCT
 
 function1()
 {
-	int x = 5;
+	int x = 5
 }
 
 function2()
 {
-	return 2;
+	return 2
 }
 
 ENDFCT
-
+}
 ENDSTR
 
 BEGIN
+{
 
-	int var = 0;
-	char string = "test";
+	int var = 0
+	char string = "test"
 	array v = {1,2,3}
-	function1(var);
-	return;
-
+	function1(var)
+	return
+}
 END
