@@ -31,9 +31,13 @@ class_block: var
 		   ;
 
 var: TIP ID
-   | TIP ID '=' ID
+   | TIP ID '=' val
    | TIP ID ',' var
    ;
+
+val: NR
+   | ID
+   | STRING
 
 fct: ID '(' var ')'
    | ID '(' ')'
@@ -46,9 +50,17 @@ func_block: ID '(' ')' '{' int_func_block '}'
 		  | ID '(' var ')' '{' int_func_block '}'
 		  ;
 
-int_func_block: var
-			  | 
+int_func_block: TIP ID '=' val
+			        | RET ID
+              ;
 
+mainblock: BEGIN main END
+         ;
+
+main: var
+    | fct
+    | return
+    ;
 
 %%
 int yyerror(char * s){
