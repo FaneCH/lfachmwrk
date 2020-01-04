@@ -6,7 +6,7 @@
 "int"|"float"|"char"|"string"|"bool" {return TIP;}
 "BEGIN" {return BGIN;}
 "END" {return END;}
-"CLS" {return CLASS;}
+"CLASS" {return CLASS;}
 "DECL" {return DECL;}
 "FUNC" {return FUNC;}
 "STARTSTR" {return STARTSTR;}

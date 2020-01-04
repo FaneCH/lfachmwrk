@@ -4,13 +4,13 @@ extern FILE* yyin;
 extern char* yytext;
 extern int yylineno;
 %}
-%token ID STARTCLASS ENDCLASS STARTFCT ENDFCT BGIN END VARS FCT CLASS NR STRING LOOP TIP ARRAYTYPE STARTSTR ENDSTR CHARTYPE RET ASSIGN PLUS OR AND MULTIPLY DIVIDE MODULO MINUS CONCAT LENGTH CLS DECL FUNC; 
+%token ID STARTCLASS ENDCLASS STARTFCT ENDFCT BGIN END VARS FCT CLASS NR String LOOP TIP ARRAYTYPE STARTSTR ENDSTR CHARTYPE RET ASSIGN PLUS OR AND MULTIPLY DIVIDE MODULO MINUS CONCAT LENGTH DECL FUNC; 
 %start program
 %%
 program: structblock mainblock {printf("program corect sintactic\n");}
        ;
 
-structblock: STARTSTR '{' interior '}' ENDSTR
+structblock: STARTSTR interior ENDSTR
            ;
 
 interior: clase
@@ -22,11 +22,11 @@ interior: clase
 clase: STARTCLASS class ENDCLASS
 	 ;
 
-class: clasa class
-     | clasa
+class: clasa
+     | clasa class
      ;
 
-clasa: CLS ID '{' interior_clasa '}'
+clasa: CLASS ID '{' interior_clasa '}'
      ;
 
 interior_clasa: DECL ':' var
@@ -44,7 +44,7 @@ var: TIP ID
 
 val: NR
    | ID
-   | STRING
+   | String
    | arrays
 
 arrays : arrays ',' array
@@ -66,15 +66,15 @@ fct: ID '(' var ')'
 functii: STARTFCT func_block ENDFCT
 	   ;
 
-func_block: ID '(' ')' '{' int_func_block '}'
-		  | ID '(' var ')' '{' int_func_block '}'
-		  ;
+func_block: fct '{' int_func_block '}'
+		      | fct '{' int_func_block '}' func_block
+		      ;
 
 int_func_block: TIP ID '=' val
 			        | RET ID
               ;
 
-mainblock: BGIN '{' main '}' END
+mainblock: BGIN main END
          ;
 
 main: var

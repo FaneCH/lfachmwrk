@@ -60,7 +60,7 @@ extern int yydebug;
     FCT = 266,
     CLASS = 267,
     NR = 268,
-    STRING = 269,
+    String = 269,
     LOOP = 270,
     TIP = 271,
     ARRAYTYPE = 272,
@@ -78,9 +78,8 @@ extern int yydebug;
     MINUS = 284,
     CONCAT = 285,
     LENGTH = 286,
-    CLS = 287,
-    DECL = 288,
-    FUNC = 289
+    DECL = 287,
+    FUNC = 288
   };
 #endif
 /* Tokens.  */
@@ -95,7 +94,7 @@ extern int yydebug;
 #define FCT 266
 #define CLASS 267
 #define NR 268
-#define STRING 269
+#define String 269
 #define LOOP 270
 #define TIP 271
 #define ARRAYTYPE 272
@@ -113,9 +112,8 @@ extern int yydebug;
 #define MINUS 284
 #define CONCAT 285
 #define LENGTH 286
-#define CLS 287
-#define DECL 288
-#define FUNC 289
+#define DECL 287
+#define FUNC 288
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

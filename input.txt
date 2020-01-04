@@ -1,12 +1,10 @@
 STARTSTR
 
-{
-
 STARTCLASS
 
-CLS obiect {
-DECL: int z = 0
-FUNC: f1(int x) 
+CLASS C{
+DECL : int z = 0
+FUNC : f1(int x) 
 }
 
 ENDCLASS
@@ -24,16 +22,15 @@ function2()
 }
 
 ENDFCT
-}
+
 ENDSTR
 
 BEGIN
-{
 
 	int var = 0
-	char string = "test"
+	char String = "test"
 	array v = {1,2,3}
 	function1(var)
 	return
-}
+
 END
