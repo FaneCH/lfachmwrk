@@ -34,6 +34,7 @@ var: TIP ID
    | TIP ID '=' val
    | TIP ID ',' var
    | ARRAYTYPE ID '=' arrays
+   | val
    ;
 
 val: NR
