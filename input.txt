@@ -3,8 +3,10 @@ STARTSTR
 STARTCLASS
 
 CLASS C{
-DECL : int z = 0
-FUNC : f1(int x) 
+decl : 
+		int z
+func :
+		f1(int x) 
 }
 
 ENDCLASS
@@ -13,7 +15,7 @@ STARTFCT
 
 function1()
 {
-	int x = 5
+	int x := 5
 }
 
 function2()
@@ -26,10 +28,9 @@ ENDFCT
 ENDSTR
 
 BEGIN
-
-	int var = 0
-	char String = "test"
-	array v = {1,2,3}
+	int v := 1
+	array s := [test]
+	array v := [1,2,3]
 	function1(var)
 	return
 

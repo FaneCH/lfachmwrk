@@ -31,35 +31,11 @@ clasa: CLASS ID '{' interior_clasa '}'
 
 interior_clasa: DECL ':' var
 		   | FUNC ':' fct
-		   | DECL ':' var interior
-		   | FUNC ':' fct interior
+		   | DECL ':' var interior_clasa
+		   | FUNC ':' fct interior_clasa
 		   ;
 
-var: TIP ID
-   | TIP ID '=' val
-   | TIP ID ',' var
-   | ARRAYTYPE ID '=' arrays
-   | val
-   ;
-
-val: NR
-   | ID
-   | String
-   | arrays
-
-arrays : arrays ',' array
-       | array
-       ;
-
-array : NR
-      | CHARTYPE
-      | '[' arrays ']'
-      | '[' ']'
-      | '{' '}'
-      ;
-
-
-fct: ID '(' var ')'
+fct: ID '(' TIP var ')'
    | ID '(' ')'
    ;
 
@@ -70,8 +46,9 @@ func_block: fct '{' int_func_block '}'
 		      | fct '{' int_func_block '}' func_block
 		      ;
 
-int_func_block: TIP ID '=' val
-			        | RET ID
+int_func_block: TIP ID ASSIGN val
+			  | RET NR
+			  | RET ID
               ;
 
 mainblock: BGIN main END
@@ -81,6 +58,27 @@ main: var
     | fct
     | RET
     ;
+
+var: TIP ID
+   | TIP ID ASSIGN val
+   | TIP ID ',' var
+   | ARRAYTYPE ID ASSIGN '[' arrays ']'
+   | ARRAYTYPE ID ASSIGN '{' arrays '}'
+   | val
+   ;
+
+val: NR
+   | ID
+   | arrays
+   ;
+
+arrays : array
+       | array ',' arrays
+       ;
+
+array : NR
+      | ID
+      ;
 
 %%
 int yyerror(char * s){

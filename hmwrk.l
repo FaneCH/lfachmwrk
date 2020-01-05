@@ -3,12 +3,14 @@
 #include "y.tab.h"
 %}
 %%
+"/*"(.|\n)+"*/" ;
 "int"|"float"|"char"|"string"|"bool" {return TIP;}
+"return" {return RET;}
 "BEGIN" {return BGIN;}
 "END" {return END;}
 "CLASS" {return CLASS;}
-"DECL" {return DECL;}
-"FUNC" {return FUNC;}
+"decl" {return DECL;}
+"func" {return FUNC;}
 "STARTSTR" {return STARTSTR;}
 "ENDSTR" {return ENDSTR;}
 "STARTCLASS" {return STARTCLASS;}
@@ -17,8 +19,8 @@
 "ENDFCT" {return ENDFCT;}
 "array" {return ARRAYTYPE;}
 "String" {return CHARTYPE;}
-@[_a-zA-Z][_a-zA-Z0-9]* {return ID;}
-"=" {return ASSIGN;}
+[A-Za-z][A-Za-z0-9]* {return ID;}
+":=" {return ASSIGN;}
 "+" {return PLUS;}
 "-" {return MINUS;}
 "*" {return MULTIPLY;}
@@ -26,9 +28,7 @@
 "%" {return MODULO;}
 "||" {return OR;}
 "&&" {return AND;}
-"concat" {return CONCAT;}
-"len" {return LENGTH;}
--?[1-9][0-9]* {return NR;}
+-?[1-9][0-9]*|0 {return NR;}
 [ \t] ;
 \n {yylineno++;}
 . {return yytext[0];}
