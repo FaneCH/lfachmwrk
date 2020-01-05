@@ -58,9 +58,13 @@ main: var
     | fct
     | RET
     | var main
-    | fct main
+    | fct_main main
     | RET
     ;
+
+fct_main: ID '(' var ')'
+   | ID '(' ')'
+   ;
 
 var: TIP ID
    | TIP ID ASSIGN val
