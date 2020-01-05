@@ -1,10 +1,20 @@
-	%{
+%{
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 extern FILE* yyin;
 extern char* yytext;
 extern int yylineno;
+int fd;
+char buffer[100];
 %}
-%token ID STARTCLASS ENDCLASS STARTFCT ENDFCT BGIN END VARS FCT CLASS NR String LOOP TIP ARRAYTYPE STARTSTR ENDSTR CHARTYPE RET ASSIGN PLUS OR AND MULTIPLY DIVIDE MODULO MINUS CONCAT LENGTH DECL FUNC; 
+%union {
+int intval;
+char* strval;
+}
+%token <strval>ID STARTCLASS ENDCLASS STARTFCT ENDFCT BGIN END VARS FCT CLASS <intval>NR String LOOP <strval>TIP <strval>ARRAYTYPE STARTSTR ENDSTR CHARTYPE RET <strval>ASSIGN PLUS OR AND MULTIPLY DIVIDE MODULO MINUS CONCAT LENGTH DECL FUNC; 
 %start program
 %%
 program: structblock mainblock {printf("program corect sintactic\n");}
@@ -66,11 +76,12 @@ fct_main: ID '(' var ')'
    | ID '(' ')'
    ;
 
-var: TIP ID
-   | TIP ID ASSIGN val
-   | TIP ID ',' var
-   | ARRAYTYPE ID ASSIGN '[' arrays ']'
-   | ARRAYTYPE ID ASSIGN '{' arrays '}'
+var: TIP ID { snprintf(buffer,100,"%s %s \n",$1,$2); write(fd, buffer, strlen(buffer));}
+   | TIP ID ASSIGN NR { snprintf(buffer,100,"%s %s %s %d \n",$1,$2,$3,$4); write(fd, buffer, strlen(buffer));}
+   | TIP ID ASSIGN ID { snprintf(buffer,100,"%s %s %s %s \n",$1,$2,$3,$4); write(fd, buffer, strlen(buffer));}
+   | TIP ID var
+   | ARRAYTYPE ID ASSIGN '[' arrays ']' { snprintf(buffer,100,"%s %s %s \n",$1,$2,$3); write(fd, buffer, strlen(buffer));}
+   | ARRAYTYPE ID ASSIGN '{' arrays '}' { snprintf(buffer,100,"%s %s %s \n",$1,$2,$3); write(fd, buffer, strlen(buffer));}
    | val
    ;
 
@@ -82,8 +93,8 @@ arrays : array
        | array ',' arrays
        ;
 
-array : NR
-      | ID
+array : NR { snprintf(buffer,100,"%d \n",$1); write(fd, buffer, strlen(buffer));}
+      | ID { snprintf(buffer,100,"%s \n",$1); write(fd, buffer, strlen(buffer));}
       ;
 
 %%
@@ -92,6 +103,8 @@ printf("eroare: %s la linia:%d\n",s,yylineno);
 }
 
 int main(int argc, char** argv){
+fd = open ("symbol_table.txt", O_RDWR);
 yyin=fopen(argv[1],"r");
 yyparse();
+
 } 

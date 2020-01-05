@@ -1,10 +1,11 @@
 %{
 #include <stdio.h>
 #include "y.tab.h"
+#include <stdlib.h>
 %}
 %%
 "/*"(.|\n)+"*/" ;
-"int"|"float"|"char"|"string"|"bool" {return TIP;}
+"int"|"float"|"char"|"string"|"bool" {yylval.strval=strdup(yytext);return TIP;}
 "return" {return RET;}
 "BEGIN" {return BGIN;}
 "END" {return END;}
@@ -17,10 +18,10 @@
 "ENDCLASS" {return ENDCLASS;}
 "STARTFCT" {return STARTFCT;}
 "ENDFCT" {return ENDFCT;}
-"array" {return ARRAYTYPE;}
+"array" {yylval.strval=strdup(yytext);return ARRAYTYPE;}
 "String" {return CHARTYPE;}
-[A-Za-z][A-Za-z0-9]* {return ID;}
-":=" {return ASSIGN;}
+[A-Za-z][A-Za-z0-9]* {yylval.strval=strdup(yytext); return ID;}
+":=" {yylval.strval=strdup(yytext);return ASSIGN;}
 "+" {return PLUS;}
 "-" {return MINUS;}
 "*" {return MULTIPLY;}
@@ -28,7 +29,7 @@
 "%" {return MODULO;}
 "||" {return OR;}
 "&&" {return AND;}
--?[1-9][0-9]*|0 {return NR;}
+-?[1-9][0-9]*|0 {yylval.intval=atoi(yytext); return NR;}
 [ \t] ;
 \n {yylineno++;}
 . {return yytext[0];}

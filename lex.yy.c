@@ -516,8 +516,9 @@ char *yytext;
 #line 2 "hmwrk.l"
 #include <stdio.h>
 #include "y.tab.h"
-#line 519 "lex.yy.c"
+#include <stdlib.h>
 #line 520 "lex.yy.c"
+#line 521 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -734,9 +735,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "hmwrk.l"
+#line 6 "hmwrk.l"
 
-#line 739 "lex.yy.c"
+#line 740 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -796,156 +797,156 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 6 "hmwrk.l"
+#line 7 "hmwrk.l"
 ;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 7 "hmwrk.l"
-{return TIP;}
+#line 8 "hmwrk.l"
+{yylval.strval=strdup(yytext);return TIP;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "hmwrk.l"
+#line 9 "hmwrk.l"
 {return RET;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 9 "hmwrk.l"
+#line 10 "hmwrk.l"
 {return BGIN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 10 "hmwrk.l"
+#line 11 "hmwrk.l"
 {return END;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 11 "hmwrk.l"
+#line 12 "hmwrk.l"
 {return CLASS;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 12 "hmwrk.l"
+#line 13 "hmwrk.l"
 {return DECL;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 13 "hmwrk.l"
+#line 14 "hmwrk.l"
 {return FUNC;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 14 "hmwrk.l"
+#line 15 "hmwrk.l"
 {return STARTSTR;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 15 "hmwrk.l"
+#line 16 "hmwrk.l"
 {return ENDSTR;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 16 "hmwrk.l"
+#line 17 "hmwrk.l"
 {return STARTCLASS;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 17 "hmwrk.l"
+#line 18 "hmwrk.l"
 {return ENDCLASS;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 18 "hmwrk.l"
+#line 19 "hmwrk.l"
 {return STARTFCT;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 19 "hmwrk.l"
+#line 20 "hmwrk.l"
 {return ENDFCT;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 20 "hmwrk.l"
-{return ARRAYTYPE;}
+#line 21 "hmwrk.l"
+{yylval.strval=strdup(yytext);return ARRAYTYPE;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 21 "hmwrk.l"
+#line 22 "hmwrk.l"
 {return CHARTYPE;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 22 "hmwrk.l"
-{return ID;}
+#line 23 "hmwrk.l"
+{yylval.strval=strdup(yytext); return ID;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 23 "hmwrk.l"
-{return ASSIGN;}
+#line 24 "hmwrk.l"
+{yylval.strval=strdup(yytext);return ASSIGN;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 24 "hmwrk.l"
+#line 25 "hmwrk.l"
 {return PLUS;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 25 "hmwrk.l"
+#line 26 "hmwrk.l"
 {return MINUS;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 26 "hmwrk.l"
+#line 27 "hmwrk.l"
 {return MULTIPLY;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 27 "hmwrk.l"
+#line 28 "hmwrk.l"
 {return DIVIDE;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 28 "hmwrk.l"
+#line 29 "hmwrk.l"
 {return MODULO;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 29 "hmwrk.l"
+#line 30 "hmwrk.l"
 {return OR;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 30 "hmwrk.l"
+#line 31 "hmwrk.l"
 {return AND;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 31 "hmwrk.l"
-{return NR;}
+#line 32 "hmwrk.l"
+{yylval.intval=atoi(yytext); return NR;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 32 "hmwrk.l"
+#line 33 "hmwrk.l"
 ;
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 33 "hmwrk.l"
+#line 34 "hmwrk.l"
 {yylineno++;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 34 "hmwrk.l"
+#line 35 "hmwrk.l"
 {return yytext[0];}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 36 "hmwrk.l"
+#line 37 "hmwrk.l"
 ECHO;
 	YY_BREAK
-#line 948 "lex.yy.c"
+#line 949 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1950,4 +1951,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 36 "hmwrk.l"
+#line 37 "hmwrk.l"

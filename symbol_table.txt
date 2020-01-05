@@ -1,0 +1,8 @@
+int z 
+int v := 1 
+test 
+array s := 
+1 
+2 
+3 
+array v := 
