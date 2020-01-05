@@ -57,6 +57,9 @@ mainblock: BGIN main END
 main: var
     | fct
     | RET
+    | var main
+    | fct main
+    | RET
     ;
 
 var: TIP ID
@@ -69,7 +72,6 @@ var: TIP ID
 
 val: NR
    | ID
-   | arrays
    ;
 
 arrays : array
