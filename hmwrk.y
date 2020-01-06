@@ -81,7 +81,6 @@ var: TIP ID { snprintf(buffer,100,"%s %s \n",$1,$2); write(fd, buffer, strlen(bu
    | TIP ID ASSIGN ID { snprintf(buffer,100,"%s %s %s %s \n",$1,$2,$3,$4); write(fd, buffer, strlen(buffer));}
    | TIP ID var
    | ARRAYTYPE ID ASSIGN '[' arrays ']' { snprintf(buffer,100,"%s %s %s \n",$1,$2,$3); write(fd, buffer, strlen(buffer));}
-   | ARRAYTYPE ID ASSIGN '{' arrays '}' { snprintf(buffer,100,"%s %s %s \n",$1,$2,$3); write(fd, buffer, strlen(buffer));}
    | val
    ;
 
