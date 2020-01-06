@@ -1543,13 +1543,13 @@ yyreduce:
 
   case 51:
 #line 103 "hmwrk.y"
-           { snprintf(buffer,100,"%d ",(yyvsp[0].intval)); write(fd, buffer, strlen(buffer));}
+           { snprintf(buffer,100,"[%d] ",(yyvsp[0].intval)); write(fd, buffer, strlen(buffer));}
 #line 1548 "y.tab.c"
     break;
 
   case 52:
 #line 104 "hmwrk.y"
-           { snprintf(buffer,100,"%s ",(yyvsp[0].strval)); write(fd, buffer, strlen(buffer));}
+           { snprintf(buffer,100,"[%s] ",(yyvsp[0].strval)); write(fd, buffer, strlen(buffer));}
 #line 1554 "y.tab.c"
     break;
 

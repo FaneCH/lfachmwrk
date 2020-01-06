@@ -100,8 +100,8 @@ arrays : array
        | array ',' arrays
        ;
 
-array : NR { snprintf(buffer,100,"%d ",$1); write(fd, buffer, strlen(buffer));}
-      | ID { snprintf(buffer,100,"%s ",$1); write(fd, buffer, strlen(buffer));}
+array : NR { snprintf(buffer,100,"[%d] ",$1); write(fd, buffer, strlen(buffer));}
+      | ID { snprintf(buffer,100,"[%s] ",$1); write(fd, buffer, strlen(buffer));}
       ;
 
 if: CTRL '(' ID OPR ID ')' '{' main '}'
