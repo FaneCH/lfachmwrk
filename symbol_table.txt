@@ -1,8 +1,11 @@
 int z 
+f1 (int x) 
+function1() 
+function2() 
+function3 (int x) 
 int v := 1 
-test 
-array s := 
-1 
-2 
-3 
-array v := 
+test array s := 
+1 2 3 array v := 
+function1 (v) 
+int v := 1 
+int v := 0 

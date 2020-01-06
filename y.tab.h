@@ -79,7 +79,11 @@ extern int yydebug;
     CONCAT = 285,
     LENGTH = 286,
     DECL = 287,
-    FUNC = 288
+    FUNC = 288,
+    CTRL = 289,
+    LOOPF = 290,
+    LOOPW = 291,
+    OPR = 292
   };
 #endif
 /* Tokens.  */
@@ -114,6 +118,10 @@ extern int yydebug;
 #define LENGTH 286
 #define DECL 287
 #define FUNC 288
+#define CTRL 289
+#define LOOPF 290
+#define LOOPW 291
+#define OPR 292
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -124,7 +132,7 @@ union YYSTYPE
 int intval;
 char* strval;
 
-#line 128 "y.tab.h"
+#line 136 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

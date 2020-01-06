@@ -6,6 +6,10 @@
 %%
 "/*"(.|\n)+"*/" ;
 "int"|"float"|"char"|"string"|"bool" {yylval.strval=strdup(yytext);return TIP;}
+"if" {return CTRL;}
+"for" {return LOOPF;}
+"while" {return LOOPW;}
+">"|"<"|"="|"!!"|">="|"<=" {return OPR;}
 "return" {return RET;}
 "BEGIN" {return BGIN;}
 "END" {return END;}
